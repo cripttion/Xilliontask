@@ -1,4 +1,4 @@
-# React Native Project 🚀  
+# Xillion Project 🚀  
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/ab03f144-b8f1-4772-9d09-f466b6338b12" alt="Home" width="250">
@@ -22,23 +22,29 @@ Follow these steps to set up and run the app on your local system:
 Install Dependencies
 Make sure you have Node.js installed. Then run:
 
-bash
-Copy code
-npm install
-Start the App
+```bash
+  Copy code
+  npm install
+  Start the App
+
 Run the following command to start the development server:
 
-bash
+```bash
 Copy code
 npm start
 Run on Emulator or Physical Device
 
 For iOS: i
 For Android: a
+```
 🎥 App Demonstration
-<p align="center"> <a href="https://github.com/user-attachments/assets/2a8d2dd7-695f-4886-85f1-395732ab1142"> <img src="https://img.youtube.com/vi/2a8d2dd7-695f-4886-85f1-395732ab1142/0.jpg" alt="Video Thumbnail" width="250"> </a> </p> [Click here to play video](https://github.com/user-attachments/assets/2a8d2dd7-695f-4886-85f1-395732ab1142)
+[Click here to play video](https://github.com/user-attachments/assets/2a8d2dd7-695f-4886-85f1-395732ab1142)
 📦 Download
-You can download the APK or IPA file to experience the app on your device.
+You can download the APK  to experience the app on your device.
+-go to the current realease on the right section of main page
+-click on the app-relase.apk it will download the apk to your device 
+-enjoy the app in your android phone
+
 
 Android: Download APK
 iOS: Download IPA
