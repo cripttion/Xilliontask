@@ -1,10 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import Feather from 'react-native-vector-icons/Feather';  // Import Feather icons for better visuals
 
 const TradeCard = ({ trade }) => {
   return (
-    <View style={styles.card}>
+    <LinearGradient
+    colors={['#C426FF99', '#5B3E96']}
+    style={styles.card}
+    start={{ x: 0, y: 1 }}
+    end={{ x: 0.6, y: 0 }}
+    locations={[0,0.4]}
+  > 
     
       <View style={styles.header}>
         <View style={styles.iconText}>
@@ -52,7 +59,7 @@ const TradeCard = ({ trade }) => {
         <Feather name="arrow-up-right" size={18} color="#5BFF7F" /> 
         <Text style={styles.profitText}>+₹{trade?.profitAmount}</Text>
       </View>
-    </View>
+    </LinearGradient>
   );
 };
 
