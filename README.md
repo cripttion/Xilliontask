@@ -1,14 +1,13 @@
 # React Native Project 🚀  
-![Home](https://github.com/user-attachments/assets/ab03f144-b8f1-4772-9d09-f466b6338b12)
-![Trade](https://github.com/user-attachments/assets/f36cfdc7-7ced-42b1-a0da-6ebcc4e5274d)
 
 <p align="center">
-  <img src="path_to_your_app_output_image" alt="App Screenshot" width="600">
+  <img src="https://github.com/user-attachments/assets/ab03f144-b8f1-4772-9d09-f466b6338b12" alt="Home" width="250">
+  <img src="https://github.com/user-attachments/assets/f36cfdc7-7ced-42b1-a0da-6ebcc4e5274d" alt="Trade" width="250">
 </p>
 
 ## 🌟 Overview  
 
-This project is a React Native application showcasing Current Stocks and the trade what we executed(ongoing,completed). It is designed with modern UI/UX principles and provides the swipable buttons & screen , dynamic scrolling .
+This project is a React Native application showcasing Current Stocks and the trades that we executed (ongoing, completed). It is designed with modern UI/UX principles and provides swipable buttons & screens, as well as dynamic scrolling.
 
 ---
 
@@ -20,38 +19,34 @@ Follow these steps to set up and run the app on your local system:
    ```bash
    git clone https://github.com/cripttion/Xilliontask.git
    cd Xilliontask
-   
 Install Dependencies
 Make sure you have Node.js installed. Then run:
 
-   ```bash
-   git clone https://github.com/cripttion/Xilliontask.git
-   cd Xilliontask
-
+bash
+Copy code
+npm install
 Start the App
-   ```bash
-   npm install
-   npm start
-   ```
-Alternatively, run the app on an emulator:
+Run the following command to start the development server:
+
+bash
+Copy code
+npm start
+Run on Emulator or Physical Device
+
 For iOS: i
 For Android: a
-🎥 App Demonstr
-
-
-
-[Click here to play video ](https://github.com/user-attachments/assets/2a8d2dd7-695f-4886-85f1-395732ab1142)
-
+🎥 App Demonstration
+<p align="center"> <a href="https://github.com/user-attachments/assets/2a8d2dd7-695f-4886-85f1-395732ab1142"> <img src="https://img.youtube.com/vi/2a8d2dd7-695f-4886-85f1-395732ab1142/0.jpg" alt="Video Thumbnail" width="250"> </a> </p> [Click here to play video](https://github.com/user-attachments/assets/2a8d2dd7-695f-4886-85f1-395732ab1142)
 📦 Download
 You can download the APK or IPA file to experience the app on your device.
 
 Android: Download APK
 iOS: Download IPA
 🚀 Features
-🌟 Feature 1
-✨ Feature 2
-🔥 Feature 3
-📂 Directory Structure
+🌟 Swipe the Home screen bottom to execute to the trade history
+✨ swipe left to come back to home from trade screen
+🔥 Scroll the trade section 
+📂 Scroll the stock list of home screen
 plaintext
 Copy code
 xillion/src
@@ -62,7 +57,6 @@ xillion/src
 └── README.md         # Project documentation
 👩‍💻 Tech Stack
 Frontend: React Native
-
 📜 License
 This project is licensed under the MIT License.
 
