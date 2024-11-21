@@ -1,7 +1,15 @@
 import React, { useRef } from 'react';
-import { StyleSheet, Text, View, ScrollView, Pressable, PanResponder } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Pressable,
+  PanResponder,
+  Animated,
+} from 'react-native';
 import TradeCard from './components/TradeCard';
-import Icon from 'react-native-vector-icons/Feather'; // Correct import for ChevronLeft
+import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 
 const tradeData = [
@@ -41,43 +49,84 @@ const tradeData = [
     profitPercentage: 1.5,
     profitAmount: 990,
   },
+  {
+    stockName: 'TCS',
+    buyPrice: 3300,
+    investedAmount: 66000,
+    quantity: 20,
+    status: 'Ongoing',
+    profitPercentage: 1.5,
+    profitAmount: 990,
+  },
+  {
+    stockName: 'TCS',
+    buyPrice: 3300,
+    investedAmount: 66000,
+    quantity: 20,
+    status: 'Ongoing',
+    profitPercentage: 1.5,
+    profitAmount: 990,
+  },
 ];
 
 const Trade = () => {
   const navigation = useNavigation();
+  const pan = useRef(new Animated.ValueXY()).current;
 
-  // Create a reference for pan responder
-  const panResponder = useRef(
-    PanResponder.create({
-      onStartShouldSetPanResponder: () => true, // Activate responder on touch start
-      onPanResponderMove: (e, gestureState) => {
-        // Track horizontal movement to detect swipe
-        if (gestureState.dx < 100) { // Negative dx means left swipe
-          navigation.navigate('Home'); // Navigate to Home when swipe left
-        }
-      },
-      onPanResponderRelease: (e, gestureState) => {
-        // Optionally reset or handle actions after the gesture ends
-      },
-    })
-  ).current;
+  // Define PanResponder
+  const panResponder = PanResponder.create({
+    onMoveShouldSetPanResponder: (evt, gestureState) => {
+      // Start tracking only horizontal swipes
+      return Math.abs(gestureState.dx) > Math.abs(gestureState.dy);
+    },
+    onPanResponderMove: (evt, gestureState) => {
+      // Update the position during the gesture
+      pan.setValue({ x: gestureState.dx, y: 0 });
+    },
+    onPanResponderRelease: (evt, gestureState) => {
+      // Detect swipe to the left
+      // console.log("the gesture state is ",gestureState.dx);
+      if (gestureState.dx > 100.00) {
+
+        navigation.navigate('Home');
+      }
+      // Reset position after swipe
+      Animated.spring(pan, {
+        toValue: { x: 0, y: 0 },
+        useNativeDriver: true,
+      }).start();
+    },
+  });
 
   const handleBackPress = () => {
-    navigation.goBack(); // Navigate back to the previous screen
+    navigation.goBack(); 
   };
 
   return (
-    <View style={styles.container} {...panResponder.panHandlers}>
-      <Pressable onPress={handleBackPress} style={styles.backIcon}>
-        <Icon name='chevron-left' size={30} color="#fff" />
-      </Pressable>
-      <Text style={styles.title}>Trade History</Text>
+    <View style={styles.container}>
+      <Animated.View
+        style={[
+          styles.swipeContainer,
+          {
+            transform: [{ translateX: pan.x }],
+          },
+        ]}
+        {...panResponder.panHandlers}
+      >
+        <Pressable onPress={handleBackPress} style={styles.backIcon}>
+          <Icon name="chevron-left" size={30} color="#fff" />
+        </Pressable>
+        <Text style={styles.title}>Trade History</Text>
 
-      <ScrollView contentContainerStyle={styles.tradeList} showsVerticalScrollIndicator={false}>
-        {tradeData.map((trade, index) => (
-          <TradeCard key={index} trade={trade} />
-        ))}
-      </ScrollView>
+        <ScrollView
+          contentContainerStyle={styles.tradeList}
+          showsVerticalScrollIndicator={false}
+        >
+          {tradeData.map((trade, index) => (
+            <TradeCard key={index} trade={trade} />
+          ))}
+        </ScrollView>
+      </Animated.View>
     </View>
   );
 };
@@ -88,12 +137,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#201831',
-    paddingHorizontal: 15, // Padding to ensure content doesn't touch edges
+    paddingHorizontal: 10,
+  },
+  swipeContainer: {
+    flex: 1,
   },
   backIcon: {
-    position: 'absolute', // Fix the back icon at the top-left corner
-    top: 20, // Adjust this depending on your design
-    left: 15,
+    position: 'absolute',
+    top: 20,
+    left: 1,
     zIndex: 1,
   },
   title: {
@@ -102,10 +154,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 24,
     marginTop: 20,
-    marginBottom: 20, // Space between title and cards
+    marginBottom: 20,
   },
-  tradeList: {
-    flexGrow: 1, // Allow content to grow if there are many cards
-    paddingBottom: 20, // Padding at the bottom to avoid cut-off of cards
-  },
+  
 });
